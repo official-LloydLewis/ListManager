@@ -47,13 +47,6 @@ class Title:
             [q] exit
             """ + RESET)
 
-def loading_animation():
-    print(GREEN + BOLD + "Loading", end="")
-    for _ in range(3):
-        time.sleep(0.5)
-        print(".", end="")
-    print(RESET)
-
 def main():
     error_count = 0
     max_errors = 3
@@ -64,24 +57,26 @@ def main():
         choice = input("Enter your choice: ").strip()
         
         if choice == '1':
-            Cls.clear()
-            loading_animation()
-            subprocess.run(['python', 'add.py'])
+            Title.Clear_Title()
+            print("Loading...")
+            time.sleep(1)  # Brief pause before loading
+            try:
+                # Run add.py script
+                subprocess.run(['python', 'C:\\Users\\Asus\\Documents\\GitHub\\ListManager-Plugin\\LM\\ListManager\\add.py'], check=True)
+            except subprocess.CalledProcessError as e:
+                print(RED + BOLD + f"Error occurred: {e}" + RESET)
             error_count = 0
         elif choice == '2':
-            Cls.clear()
+            Title.Clear_Title()
             print("Removing user... (this is just a placeholder)")
-            time.sleep(2)
             error_count = 0
         elif choice == '3':
-            Cls.clear()
+            Title.Clear_Title()
             print("Showing all users... (this is just a placeholder)")
-            time.sleep(2)
             error_count = 0
         elif choice == '4':
-            Cls.clear()
+            Title.Clear_Title()
             print("Help guide... (this is just a placeholder)")
-            time.sleep(2)
             error_count = 0
         elif choice.lower() == 'q':
             print("Exiting...")
@@ -98,6 +93,6 @@ def main():
             error_count = 0
         else:
             time.sleep(2)  # Pause before clearing the screen for any choice
-
+        
 if __name__ == "__main__":
     main()

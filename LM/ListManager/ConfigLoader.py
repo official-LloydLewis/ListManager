@@ -15,9 +15,5 @@ class ConfigLoader:
         path = self.config['paths'].get(key, '')
         return os.path.expanduser(path) if path else ''
 
-# Load configuration
-config_loader = ConfigLoader(os.path.join(os.path.dirname(__file__), 'config.yml'))
-
-# Get the new data path
-data_path = config_loader.get_path('data_folder')
-print(f"Data path: {data_path}")
+# Load configuration from the correct path
+config_loader = ConfigLoader('C:\\Users\\Asus\\Documents\\GitHub\\ListManager-Plugin\\LM\\Config\\config.yml')

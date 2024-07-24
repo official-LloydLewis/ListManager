@@ -3,6 +3,10 @@ from USERS import USERS
 import os
 import colorama
 
+# Get the new data path
+data_path = config_loader.get_path('data_folder')
+print(f"Data path: {data_path}")
+
 # Initialize colorama
 colorama.init()
 
