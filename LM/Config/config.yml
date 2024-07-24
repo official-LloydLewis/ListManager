@@ -1,0 +1,28 @@
+#  _      _     _                                                  
+# | |    (_)   | | Best list manager plugin!                                                
+# | |     _ ___| |_   _ __ ___   __ _ _ __   __ _  __ _  ___ _ __  
+# | |    | / __| __| | '_ ` _ \ / _` | '_ \ / _` |/ _` |/ _ \ '__| 
+# | |____| \__ \ |_  | | | | | | (_| | | | | (_| | (_| |  __/ |    
+# |______|_|___/\__| |_| |_| |_|\__,_|_| |_|\__,_|\__, |\___|_|    
+#                                                  __/ |           
+#                                                 |___/   by: LloydLewizzz         
+
+version: "1.0.0 beta"
+date: "2024-07-23"
+developer: "LloydLewis"
+
+# Messages for user interaction
+messages:
+  enter_name: "Enter name (letters only): "
+  name_error: "Name must contain only letters. Please try again."
+  enter_age: "Enter age (integer): "
+  age_error: "Age must be an integer. Please try again."
+  enter_gender: "Enter gender (male/female): "
+  gender_error: "Gender must be 'male' or 'female'. Please try again."
+  enter_role: "Enter role (owner/developer/admin/member): "
+  role_error: "Role must be one of owner, developer, admin, member. Please try again."
+  user_added: "User {} added successfully with code {}."
+
+# Paths for data storage
+paths:
+  data_folder: "C:\\Users\\Asus\\Documents\\GitHub\\ListManager-Plugin\\LM\\Database\\USERS.json"
