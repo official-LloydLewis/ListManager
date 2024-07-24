@@ -1,6 +1,6 @@
 import os
-import colorama
 import time
+import colorama
 
 # Initialize colorama
 colorama.init()
@@ -27,7 +27,7 @@ class Title:
     @staticmethod
     def Clear_Title():
         Cls.clear()
-        print(YELLOW + BOLD +"""
+        print(YELLOW + BOLD + """
          _      _     _                                                  
         | |    (_)   | | Best list manager plugin!                                                
         | |     _ ___| |_   _ __ ___   __ _ _ __   __ _  __ _  ___ _ __  
@@ -36,51 +36,52 @@ class Title:
         |______|_|___/\__| |_| |_| |_|\__,_|_| |_|\__,_|\__, |\___|_|    
                                                         __/  |           
                                                        |____/   by: LloydLewizzz          
-        """+ RESET)
+        """ + RESET)
 
-        print(WHITE + BOLD+"""   
+        print(WHITE + BOLD + """   
             [1] add USER
             [2] remove USER
             [3] show all USERS
             [4] help guide
             [q] exit
-            """+ RESET)
+            """ + RESET)
 
 def main():
-    max_errors = 3  # Maximum number of errors before clearing the screen
     error_count = 0
-    
+    max_errors = 3
     while True:
         Title.Clear_Title()
-        choice = input(BOLD + GREEN + "Enter your choice: " + RESET + WHITE).strip()
+        
+        # Get user input
+        choice = input("Enter your choice: ").strip()
         
         if choice == '1':
-            # Placeholder for add user functionality
-            print(BOLD + GREEN + "Add user selected." + RESET)
-            error_count = 0  # Reset error count on valid input
+            print("Adding user... (this is just a placeholder)")
+            error_count = 0
         elif choice == '2':
-            # Placeholder for remove user functionality
-            print(BOLD + GREEN + "Remove user selected." + RESET)
-            error_count = 0  # Reset error count on valid input
+            print("Removing user... (this is just a placeholder)")
+            error_count = 0
         elif choice == '3':
-            # Placeholder for show all users functionality
-            print(BOLD + GREEN + "Show all users selected." + RESET)
-            error_count = 0  # Reset error count on valid input
+            print("Showing all users... (this is just a placeholder)")
+            error_count = 0
         elif choice == '4':
-            # Placeholder for help guide functionality
-            print(BOLD + GREEN + "Help guide selected." + RESET)
-            error_count = 0  # Reset error count on valid input
+            print("Help guide... (this is just a placeholder)")
+            error_count = 0
         elif choice.lower() == 'q':
+            print("Exiting...")
             break
         else:
-            error_count += 1
             print(WHITE + "-----------------------------------------------" + RESET)
             print(RED + BOLD + "Invalid choice. Please try again." + RESET)
             print(WHITE + "-----------------------------------------------" + RESET)
-            if error_count >= max_errors:
-                time.sleep(3)  # Wait for 3 seconds before clearing the screen
-                Cls.clear()
-                error_count = 0  # Reset error count after clearing the screen
-
+            error_count += 1
+        
+        if error_count >= max_errors:
+            time.sleep(3)
+            Cls.clear()
+            error_count = 0
+        else:
+            time.sleep(2)  # Pause before clearing the screen for any choice
+        
 if __name__ == "__main__":
     main()
