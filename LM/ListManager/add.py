@@ -2,11 +2,7 @@ from ConfigLoader import config_loader
 from USERS import USERS
 import os
 import colorama
-
-
-# Get the new data path
-data_path = config_loader.get_path('data_folder')
-print(f"Data path: {data_path}")
+import time
 
 # Initialize colorama
 colorama.init()
@@ -31,8 +27,7 @@ class Cls:
 
 class Title:
     @staticmethod
-    def Clear_Title():
-        Cls.clear()
+    def show_title():
         print(YELLOW + BOLD + """
          _      _     _                                                  
         | |    (_)   | | Best list manager plugin!                                                
@@ -46,8 +41,9 @@ class Title:
         """ + RESET)
 
 def input_name():
-    Title.Clear_Title()
     while True:
+        Cls.clear()
+        Title.show_title()
         name = input(BOLD + GREEN + config_loader.get_message('enter_name') + RESET + WHITE)
         if name.isalpha():
             return name
@@ -55,9 +51,12 @@ def input_name():
             print(WHITE + "-----------------------------------------------" + RESET)
             print(RED + BOLD + config_loader.get_message('name_error') + RESET)
             print(WHITE + "-----------------------------------------------" + RESET)
+            time.sleep(1)
 
 def input_age():
     while True:
+        Cls.clear()
+        Title.show_title()
         age = input(BOLD + GREEN + config_loader.get_message('enter_age') + RESET + WHITE)
         if age.isdigit():
             return int(age)
@@ -65,9 +64,12 @@ def input_age():
             print(WHITE + "-----------------------------------------------" + RESET)
             print(RED + BOLD + config_loader.get_message('age_error') + RESET)
             print(WHITE + "-----------------------------------------------" + RESET)
+            time.sleep(1)
 
 def input_gender():
     while True:
+        Cls.clear()
+        Title.show_title()
         gender = input(BOLD + GREEN + config_loader.get_message('enter_gender') + RESET + WHITE).lower()
         if gender in ['male', 'female']:
             return gender
@@ -75,9 +77,12 @@ def input_gender():
             print(WHITE + "-----------------------------------------------" + RESET)
             print(RED + BOLD + config_loader.get_message('gender_error') + RESET)
             print(WHITE + "-----------------------------------------------" + RESET)
+            time.sleep(1)
 
 def input_role():
     while True:
+        Cls.clear()
+        Title.show_title()
         role = input(BOLD + GREEN + config_loader.get_message('enter_role') + RESET + WHITE).lower()
         if role in USERS.ROLES:
             return role
@@ -85,6 +90,7 @@ def input_role():
             print(WHITE + "-----------------------------------------------" + RESET)
             print(RED + BOLD + config_loader.get_message('role_error') + RESET)
             print(WHITE + "-----------------------------------------------" + RESET)
+            time.sleep(1)
 
 def add_user():
     code = USERS.get_next_code()
