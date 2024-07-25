@@ -69,18 +69,34 @@ def main():
             except subprocess.CalledProcessError as e:
                 print(RED + BOLD + f"Error occurred: {e}" + RESET)
             error_count = 0
+
         elif choice == '2':
             Title.Clear_Title()
-            print("Removing user... (this is just a placeholder)")
+            Loading.display_loading()
+            time.sleep(1)  # Brief pause before loading
+            try:
+                # Run add.py script
+                subprocess.run(['python', 'C:\\Users\\Asus\\Documents\\GitHub\\ListManager-Plugin\\LM\\ListManager\\help.py'], check=True)
+            except subprocess.CalledProcessError as e:
+                print(RED + BOLD + f"Error occurred: {e}" + RESET)
             error_count = 0
+
         elif choice == '3':
             Title.Clear_Title()
             print("Showing all users... (this is just a placeholder)")
             error_count = 0
+            
         elif choice == '4':
             Title.Clear_Title()
-            print("Help guide... (this is just a placeholder)")
+            Loading.display_loading()
+            time.sleep(1)  # Brief pause before loading
+            try:
+                # Run add.py script
+                subprocess.run(['python', 'C:\\Users\\Asus\\Documents\\GitHub\\ListManager-Plugin\\LM\\ListManager\\help.py'], check=True)
+            except subprocess.CalledProcessError as e:
+                print(RED + BOLD + f"Error occurred: {e}" + RESET)
             error_count = 0
+
         elif choice.lower() == 'q':
             print("Exiting...")
             break

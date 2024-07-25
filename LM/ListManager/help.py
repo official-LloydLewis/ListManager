@@ -5,10 +5,21 @@ import colorama
 import time
 import keyboard  # Import the keyboard module
 
-# اضافه کردن مسیر `ListManager-Plugin\LM` به sys.path
+
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from Others.Titels import TITELS  # حالا می‌توانید `TITELS` را وارد کنید
+from Others.Titels import TITELS  
+
+
+# Clear class
+class Cls:
+    @staticmethod
+    def clear():
+        if os.name == 'nt':  # For Windows
+            os.system('cls')
+        else:  # For Unix-like systems (Linux, macOS)
+            os.system('clear')
 
 # Initialize colorama
 colorama.init()
@@ -23,6 +34,7 @@ RESET = colorama.Style.RESET_ALL
 YELLOW = colorama.Fore.YELLOW
 
 def display_help():
+    Cls.clear()
     TITELS.display_help_guide(YELLOW)
     help_guide = config_loader.config.get('help-guide', [])
     max_length = max(len(line) for line in help_guide)
