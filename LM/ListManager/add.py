@@ -3,6 +3,7 @@ from USERS import USERS
 import os
 import colorama
 
+
 # Get the new data path
 data_path = config_loader.get_path('data_folder')
 print(f"Data path: {data_path}")
@@ -17,6 +18,7 @@ WHITE = colorama.Fore.WHITE
 L_GREEN = colorama.Fore.LIGHTGREEN_EX
 BOLD = colorama.Style.BRIGHT
 RESET = colorama.Style.RESET_ALL
+YELLOW = colorama.Fore.YELLOW
 
 # Clear class
 class Cls:
@@ -27,9 +29,24 @@ class Cls:
         else:  # For Unix-like systems (Linux, macOS)
             os.system('clear')
 
-Cls.clear()
+class Title:
+    @staticmethod
+    def Clear_Title():
+        Cls.clear()
+        print(YELLOW + BOLD + """
+         _      _     _                                                  
+        | |    (_)   | | Best list manager plugin!                                                
+        | |     _ ___| |_   _ __ ___   __ _ _ __   __ _  __ _  ___ _ __  
+        | |    | / __| __| | '_ ` _ \ / _` | '_ \ / _` |/ _` |/ _ \ '__| 
+        | |____| \__ \ |_  | | | | | | (_| | | | | (_| | (_| |  __/ |    
+        |______|_|___/\__| |_| |_| |_|\__,_|_| |_|\__,_|\__, |\___|_|    
+                                                        __/  |           
+                                                       |____/   by: LloydLewizzz        
+                
+        """ + RESET)
 
 def input_name():
+    Title.Clear_Title()
     while True:
         name = input(BOLD + GREEN + config_loader.get_message('enter_name') + RESET + WHITE)
         if name.isalpha():

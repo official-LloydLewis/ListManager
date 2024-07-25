@@ -1,5 +1,15 @@
 import os
 import time
+import colorama
+
+# Color configurations
+RED = colorama.Fore.RED
+GREEN = colorama.Fore.GREEN
+WHITE = colorama.Fore.WHITE
+L_GREEN = colorama.Fore.LIGHTGREEN_EX
+BOLD = colorama.Style.BRIGHT
+RESET = colorama.Style.RESET_ALL
+YELLOW = colorama.Fore.YELLOW
 
 # Clear class
 class Cls:
@@ -15,9 +25,7 @@ class Loading:
     @staticmethod
     def display_loading():
         ascii_art = {
-            "3": """
-Loading...
-                        
+            "3": RED + BOLD +"""          
              $$$$$$\  
             $$ ___$$\ 
             \_/   $$ |
@@ -27,9 +35,8 @@ Loading...
             \$$$$$$  |
              \______/
 
-            """,
-            "2": """
-Loading..                      
+""" + RESET ,
+            "2": RED + BOLD +"""
             $$$$$$\  
             $$  __$$\ 
             \__/  $$ |
@@ -39,9 +46,8 @@ Loading..
             $$$$$$$$\ 
             \________|
 
-            """,
-            "1": """
-Loading.                     
+""" + RESET ,
+            "1": RED + BOLD +"""
               $$\   
             $$$$ |  
             \_$$ |  
@@ -51,7 +57,7 @@ Loading.
            $$$$$$\ 
            \______|
 
-            """
+""" + RESET 
         }
 
         for number in ["3", "2", "1"]:
