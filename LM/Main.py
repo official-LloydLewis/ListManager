@@ -2,6 +2,9 @@ import os
 import time
 import colorama
 import subprocess
+from Others.Loadings import Loading
+
+
 
 # Initialize colorama
 colorama.init()
@@ -58,7 +61,7 @@ def main():
         
         if choice == '1':
             Title.Clear_Title()
-            print("Loading...")
+            Loading.display_loading()
             time.sleep(1)  # Brief pause before loading
             try:
                 # Run add.py script

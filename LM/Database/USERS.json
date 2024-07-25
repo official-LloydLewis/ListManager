@@ -43,5 +43,14 @@
         "active_now": "",
         "activity_time": "",
         "role": "member"
+    },
+    {
+        "code": "006",
+        "name": "Dangu",
+        "age": 15,
+        "gender": "male",
+        "active_now": "",
+        "activity_time": "",
+        "role": "member"
     }
 ]
