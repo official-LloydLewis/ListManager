@@ -1,8 +1,8 @@
 [
     {
-        "code": "001",
+        "code": "01",
         "name": "LloydLewis",
-        "age": 16,
+        "age": 15,
         "gender": "male",
         "active_now": "",
         "activity_time": "",
@@ -10,79 +10,7 @@
     },
     {
         "code": "002",
-        "name": "Test",
-        "age": 134,
-        "gender": "male",
-        "active_now": "",
-        "activity_time": "",
-        "role": "member"
-    },
-    {
-        "code": "003",
-        "name": "asd",
-        "age": 12,
-        "gender": "male",
-        "active_now": "",
-        "activity_time": "",
-        "role": "member"
-    },
-    {
-        "code": "004",
-        "name": "matin",
-        "age": 15,
-        "gender": "male",
-        "active_now": "",
-        "activity_time": "",
-        "role": "member"
-    },
-    {
-        "code": "005",
         "name": "test",
-        "age": 14,
-        "gender": "male",
-        "active_now": "",
-        "activity_time": "",
-        "role": "member"
-    },
-    {
-        "code": "006",
-        "name": "Dangu",
-        "age": 15,
-        "gender": "male",
-        "active_now": "",
-        "activity_time": "",
-        "role": "member"
-    },
-    {
-        "code": "007",
-        "name": "nigger",
-        "age": 134,
-        "gender": "male",
-        "active_now": "",
-        "activity_time": "",
-        "role": "member"
-    },
-    {
-        "code": "008",
-        "name": "hello",
-        "age": 13,
-        "gender": "male",
-        "active_now": "",
-        "activity_time": "",
-        "role": "member"
-    },
-    {
-        "code": "009",
-        "name": "asd",
-        "age": 13,
-        "gender": "male",
-        "active_now": "",
-        "activity_time": "",
-        "role": "member"
-    },
-    {
-        "code": "010",
-        "name": "testing",
         "age": 123,
         "gender": "male",
         "active_now": "",
@@ -90,9 +18,9 @@
         "role": "member"
     },
     {
-        "code": "011",
-        "name": "LloydLewis",
-        "age": 132,
+        "code": "003",
+        "name": "tests",
+        "age": 134,
         "gender": "male",
         "active_now": "",
         "activity_time": "",

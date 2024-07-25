@@ -1,11 +1,16 @@
-from ConfigLoader import config_loader
-from USERS import USERS
+# add.py
+
+from ConfigLoader import ConfigLoader  # Import ConfigLoader class
+from USERS import USERS  # Import USERS class
 import os
 import colorama
 import time
 
 # Initialize colorama
 colorama.init()
+
+# Load the config
+config_loader = ConfigLoader(r'C:\Users\Asus\Documents\GitHub\ListManager-Plugin\LM\Config\config.yml')
 
 # Color configurations
 RED = colorama.Fore.RED
@@ -37,7 +42,6 @@ class Title:
         |______|_|___/\__| |_| |_| |_|\__,_|_| |_|\__,_|\__, |\___|_|    
                                                         __/  |           
                                                        |____/   by: LloydLewizzz        
-                
         """ + RESET)
 
 def input_name():
@@ -46,7 +50,19 @@ def input_name():
         Title.show_title()
         name = input(BOLD + GREEN + config_loader.get_message('enter_name') + RESET + WHITE)
         if name.isalpha():
-            return name
+            try:
+                if USERS.name_exists(name):
+                    print(WHITE + "-----------------------------------------------" + RESET)
+                    print(RED + BOLD + config_loader.get_message('name_exists_error') + RESET)
+                    print(WHITE + "-----------------------------------------------" + RESET)
+                    time.sleep(1)
+                else:
+                    return name
+            except ValueError as e:
+                print(WHITE + "-----------------------------------------------" + RESET)
+                print(str(e))
+                print(WHITE + "-----------------------------------------------" + RESET)
+                time.sleep(1)
         else:
             print(WHITE + "-----------------------------------------------" + RESET)
             print(RED + BOLD + config_loader.get_message('name_error') + RESET)
@@ -92,21 +108,24 @@ def input_role():
             print(WHITE + "-----------------------------------------------" + RESET)
             time.sleep(1)
 
-def add_user():
-    code = USERS.get_next_code()
-    if USERS.code_exists(code):
-        print(RED + BOLD + config_loader.get_message('code_exists').format(code) + RESET)
-        return
-
+def main():
+    Cls.clear()
+    Title.show_title()
     name = input_name()
     age = input_age()
     gender = input_gender()
     role = input_role()
 
-    new_user = USERS(code=code, name=name, age=age, gender=gender, role=role)
-    USERS.save_user(new_user)
-    print(L_GREEN + BOLD + config_loader.get_message('user_added').format(name, code) + RESET)
+    code = USERS.get_next_code()
 
-# Example usage
+    try:
+        user = USERS(code, name, age, gender, role)
+        USERS.save_user(user)
+        print(GREEN + BOLD + f"User '{name}' added successfully!" + RESET)
+    except ValueError as e:
+        print(WHITE + "-----------------------------------------------" + RESET)
+        print(str(e))
+        print(WHITE + "-----------------------------------------------" + RESET)
+
 if __name__ == "__main__":
-    add_user()
+    main()

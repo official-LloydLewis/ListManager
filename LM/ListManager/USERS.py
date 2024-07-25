@@ -1,7 +1,9 @@
+# USERS.py
+
 import json
 import os
 import colorama
-from ConfigLoader import config_loader
+from ConfigLoader import ConfigLoader
 
 # Initialize colorama
 colorama.init()
@@ -13,12 +15,6 @@ WHITE = colorama.Fore.WHITE
 L_GREEN = colorama.Fore.LIGHTGREEN_EX
 BOLD = colorama.Style.BRIGHT
 RESET = colorama.Style.RESET_ALL
-
-def clear_screen():
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
 
 class USERS:
     ROLES = ['owner', 'developer', 'admin', 'member']
@@ -75,6 +71,7 @@ class USERS:
 
     @staticmethod
     def get_next_code():
+        config_loader = ConfigLoader(r'C:\Users\Asus\Documents\GitHub\ListManager-Plugin\LM\Config\config.yml')
         path = config_loader.get_path('data_folder')
         if os.path.exists(path):
             try:
@@ -93,16 +90,14 @@ class USERS:
 
     @staticmethod
     def code_exists(code):
+        config_loader = ConfigLoader(r'C:\Users\Asus\Documents\GitHub\ListManager-Plugin\LM\Config\config.yml')
         path = config_loader.get_path('data_folder')
         if os.path.exists(path):
             try:
                 with open(path, 'r') as file:
                     try:
                         data = json.load(file)
-                        for user in data:
-                            if user['code'] == code:
-                                return True
-                        return False
+                        return any(user['code'] == code for user in data)
                     except json.JSONDecodeError as e:
                         print(f"{RED}{BOLD}Error reading JSON file: {e}{RESET}")
                         return False
@@ -113,6 +108,7 @@ class USERS:
 
     @staticmethod
     def save_user(user):
+        config_loader = ConfigLoader(r'C:\Users\Asus\Documents\GitHub\ListManager-Plugin\LM\Config\config.yml')
         path = config_loader.get_path('data_folder')
         directory = os.path.dirname(path)
         if not os.path.exists(directory):
@@ -138,19 +134,20 @@ class USERS:
         except IOError as e:
             print(f"{RED}{BOLD}IOError: {e}{RESET}")
 
-# Example usage
-if __name__ == "__main__":
-    clear_screen()
-
-    try:
-        code = USERS.get_next_code()
-        name = "JohnDoe"  # Valid name for testing
-        age = 30  # Valid age for testing
-        gender = "male"
-        role = "admin"
-
-        new_user = USERS(code=code, name=name, age=age, gender=gender, role=role)
-        USERS.save_user(new_user)
-        print(f"{GREEN}{BOLD}User {name} added successfully with code {code}.{RESET}")
-    except ValueError as e:
-        print(f"{RED}{BOLD}Error: {e}{RESET}")
+    @staticmethod
+    def name_exists(name):
+        config_loader = ConfigLoader(r'C:\Users\Asus\Documents\GitHub\ListManager-Plugin\LM\Config\config.yml')
+        path = config_loader.get_path('data_folder')
+        if os.path.exists(path):
+            try:
+                with open(path, 'r') as file:
+                    try:
+                        data = json.load(file)
+                        return any(user['name'].lower() == name.lower() for user in data)
+                    except json.JSONDecodeError as e:
+                        print(f"{RED}{BOLD}Error reading JSON file: {e}{RESET}")
+                        return False
+            except IOError as e:
+                print(f"{RED}{BOLD}IOError: {e}{RESET}")
+                return False
+        return False
