@@ -24,6 +24,11 @@ messages:
   user_added: "User {} added successfully with code {}."
   name_exists_error: "Name already exists. Please choose a different name."
 
+# Help guide
+help-guide:
+  - "add for adding users to your database"
+  - "if you want to change text go to config.yml"
+  - "show list help you to see users (more features in next update!)"
 # Paths for data storage
 paths:
   data_folder: "C:\\Users\\Asus\\Documents\\GitHub\\ListManager-Plugin\\LM\\Database\\USERS.json"

@@ -12,3 +12,6 @@ class ConfigLoader:
 
     def get_path(self, key):
         return self.config.get('paths', {}).get(key, "Path not found")
+
+    def get_help_guide(self):
+        return self.config.get('help-guide', [])
