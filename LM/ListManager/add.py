@@ -94,6 +94,10 @@ def input_role():
 
 def add_user():
     code = USERS.get_next_code()
+    if USERS.code_exists(code):
+        print(RED + BOLD + config_loader.get_message('code_exists').format(code) + RESET)
+        return
+
     name = input_name()
     age = input_age()
     gender = input_gender()
@@ -103,5 +107,6 @@ def add_user():
     USERS.save_user(new_user)
     print(L_GREEN + BOLD + config_loader.get_message('user_added').format(name, code) + RESET)
 
+# Example usage
 if __name__ == "__main__":
     add_user()

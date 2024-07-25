@@ -15,7 +15,6 @@ BOLD = colorama.Style.BRIGHT
 RESET = colorama.Style.RESET_ALL
 
 def clear_screen():
-    # Clear the screen based on the operating system
     if os.name == 'nt':
         os.system('cls')
     else:
@@ -42,10 +41,10 @@ class USERS:
 
     @staticmethod
     def validate_age(age):
-        if isinstance(age, int):
+        if isinstance(age, int) and age > 0:
             return age
         else:
-            raise ValueError(f"{RED}{BOLD}Age must be an integer{RESET}")
+            raise ValueError(f"{RED}{BOLD}Age must be a positive integer{RESET}")
 
     @staticmethod
     def validate_gender(gender):
@@ -75,34 +74,50 @@ class USERS:
         }
 
     @staticmethod
-    def get_existing_codes():
+    def get_next_code():
         path = config_loader.get_path('data_folder')
         if os.path.exists(path):
             try:
                 with open(path, 'r') as file:
                     try:
                         data = json.load(file)
-                        return [user["code"] for user in data]
+                        return f"{len(data) + 1:03d}"
                     except json.JSONDecodeError as e:
                         print(f"{RED}{BOLD}Error reading JSON file: {e}{RESET}")
-                        return []
+                        return "001"
             except IOError as e:
                 print(f"{RED}{BOLD}IOError: {e}{RESET}")
-                return []
+                return "001"
         else:
-            return []
+            return "001"
 
     @staticmethod
-    def get_next_code():
-        existing_codes = USERS.get_existing_codes()
-        next_code = 1
-        while f"{next_code:03d}" in existing_codes:
-            next_code += 1
-        return f"{next_code:03d}"
+    def code_exists(code):
+        path = config_loader.get_path('data_folder')
+        if os.path.exists(path):
+            try:
+                with open(path, 'r') as file:
+                    try:
+                        data = json.load(file)
+                        for user in data:
+                            if user['code'] == code:
+                                return True
+                        return False
+                    except json.JSONDecodeError as e:
+                        print(f"{RED}{BOLD}Error reading JSON file: {e}{RESET}")
+                        return False
+            except IOError as e:
+                print(f"{RED}{BOLD}IOError: {e}{RESET}")
+                return False
+        return False
 
     @staticmethod
     def save_user(user):
         path = config_loader.get_path('data_folder')
+        directory = os.path.dirname(path)
+        if not os.path.exists(directory):
+            os.makedirs(directory)  # Create directory if it does not exist
+
         if os.path.exists(path):
             try:
                 with open(path, 'r') as file:
@@ -125,13 +140,12 @@ class USERS:
 
 # Example usage
 if __name__ == "__main__":
-    # Clear the screen at the start
     clear_screen()
 
     try:
         code = USERS.get_next_code()
-        name = "JohnDoe"
-        age = 25
+        name = "JohnDoe"  # Valid name for testing
+        age = 30  # Valid age for testing
         gender = "male"
         role = "admin"
 
