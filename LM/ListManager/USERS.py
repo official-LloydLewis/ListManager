@@ -75,22 +75,30 @@ class USERS:
         }
 
     @staticmethod
-    def get_next_code():
+    def get_existing_codes():
         path = config_loader.get_path('data_folder')
         if os.path.exists(path):
             try:
                 with open(path, 'r') as file:
                     try:
                         data = json.load(file)
-                        return f"{len(data) + 1:03d}"
+                        return [user["code"] for user in data]
                     except json.JSONDecodeError as e:
                         print(f"{RED}{BOLD}Error reading JSON file: {e}{RESET}")
-                        return "001"
+                        return []
             except IOError as e:
                 print(f"{RED}{BOLD}IOError: {e}{RESET}")
-                return "001"
+                return []
         else:
-            return "001"
+            return []
+
+    @staticmethod
+    def get_next_code():
+        existing_codes = USERS.get_existing_codes()
+        next_code = 1
+        while f"{next_code:03d}" in existing_codes:
+            next_code += 1
+        return f"{next_code:03d}"
 
     @staticmethod
     def save_user(user):
