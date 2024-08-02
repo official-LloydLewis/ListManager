@@ -4,8 +4,6 @@ import colorama
 import subprocess
 from Others.Loadings import Loading
 
-
-
 # Initialize colorama
 colorama.init()
 
@@ -57,7 +55,12 @@ def main():
         Title.Clear_Title()
         
         # Get user input
-        choice = input("Enter your choice: ").strip()
+        choice = input("\n            Enter your choice: ").strip()
+        
+        # Define relative paths
+        base_path = os.path.dirname(__file__)
+        add_script = os.path.join(base_path, 'ListManager', 'add.py')
+        help_script = os.path.join(base_path, 'ListManager', 'help.py')
         
         if choice == '1':
             Title.Clear_Title()
@@ -65,7 +68,7 @@ def main():
             time.sleep(1)  # Brief pause before loading
             try:
                 # Run add.py script
-                subprocess.run(['python', 'C:\\Users\\Asus\\Documents\\GitHub\\ListManager-Plugin\\LM\\ListManager\\add.py'], check=True)
+                subprocess.run(['python', add_script], check=True)
             except subprocess.CalledProcessError as e:
                 print(RED + BOLD + f"Error occurred: {e}" + RESET)
             error_count = 0
@@ -75,8 +78,8 @@ def main():
             Loading.display_loading()
             time.sleep(1)  # Brief pause before loading
             try:
-                # Run add.py script
-                subprocess.run(['python', 'C:\\Users\\Asus\\Documents\\GitHub\\ListManager-Plugin\\LM\\ListManager\\help.py'], check=True)
+                # Run remove.py script
+                subprocess.run(['python', help_script], check=True)
             except subprocess.CalledProcessError as e:
                 print(RED + BOLD + f"Error occurred: {e}" + RESET)
             error_count = 0
@@ -91,8 +94,8 @@ def main():
             Loading.display_loading()
             time.sleep(1)  # Brief pause before loading
             try:
-                # Run add.py script
-                subprocess.run(['python', 'C:\\Users\\Asus\\Documents\\GitHub\\ListManager-Plugin\\LM\\ListManager\\help.py'], check=True)
+                # Run help.py script
+                subprocess.run(['python', help_script], check=True)
             except subprocess.CalledProcessError as e:
                 print(RED + BOLD + f"Error occurred: {e}" + RESET)
             error_count = 0

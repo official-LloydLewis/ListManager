@@ -1,6 +1,5 @@
 import colorama
 
-
 # Initialize colorama
 colorama.init()
 
@@ -29,7 +28,7 @@ class TITELS:
         
     @staticmethod
     def display_titel(color):
-        print(color + """
+        return color + """
          _      _     _                                                  
         | |    (_)   | | Best list manager plugin!                                                
         | |     _ ___| |_   _ __ ___   __ _ _ __   __ _  __ _  ___ _ __  
@@ -38,4 +37,4 @@ class TITELS:
         |______|_|___/\__| |_| |_| |_|\__,_|_| |_|\__,_|\__, |\___|_|    
                                                         __/  |           
                                                        |____/   by: LloydLewizzz 
-        """ + colorama.Style.RESET_ALL)
+        """ + colorama.Style.RESET_ALL

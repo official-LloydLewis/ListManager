@@ -1,16 +1,21 @@
-# add.py
-
 from ConfigLoader import ConfigLoader  # Import ConfigLoader class
 from USERS import USERS  # Import USERS class
 import os
 import colorama
 import time
 
-# Initialize colorama
-colorama.init()
+# Define the relative path to the config file
+config_path = os.path.join(os.path.dirname(__file__), '..', 'Config', 'config.yml')
+
+# Verify that the config file exists
+if not os.path.isfile(config_path):
+    raise FileNotFoundError(f"Config file not found: {config_path}")
 
 # Load the config
-config_loader = ConfigLoader(r'C:\Users\Asus\Documents\GitHub\ListManager-Plugin\LM\Config\config.yml')
+config_loader = ConfigLoader(config_path)
+
+# Initialize colorama
+colorama.init()
 
 # Color configurations
 RED = colorama.Fore.RED
@@ -121,7 +126,7 @@ def main():
     try:
         user = USERS(code, name, age, gender, role)
         USERS.save_user(user)
-        print(GREEN + BOLD + f"User '{name}' added successfully!" + RESET)
+        print(GREEN + BOLD + f"User"+ YELLOW + BOLD +f" [{code}] {name} "+ GREEN + BOLD +"added successfully!" + RESET)
     except ValueError as e:
         print(WHITE + "-----------------------------------------------" + RESET)
         print(str(e))

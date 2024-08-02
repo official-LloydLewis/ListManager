@@ -1,5 +1,3 @@
-# ConfigLoader.py
-
 import yaml
 
 class ConfigLoader:

@@ -1,16 +1,13 @@
 import sys
 import os
-from ConfigLoader import ConfigLoader  # Import ConfigLoader class
 import colorama
 import time
-import keyboard  # Import the keyboard module
-
-
+import keyboard
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from Others.Titels import TITELS  
-
+from ConfigLoader import ConfigLoader  # Import ConfigLoader class
+from Others.Titels import TITELS
 
 # Clear class
 class Cls:
@@ -24,8 +21,15 @@ class Cls:
 # Initialize colorama
 colorama.init()
 
+# Define the relative path to the config file
+config_path = os.path.join(os.path.dirname(__file__), '..', 'Config', 'config.yml')
+
+# Verify that the config file exists
+if not os.path.isfile(config_path):
+    raise FileNotFoundError(f"Config file not found: {config_path}")
+
 # Load the config
-config_loader = ConfigLoader(r'C:\Users\Asus\Documents\GitHub\ListManager-Plugin\LM\Config\config.yml')
+config_loader = ConfigLoader(config_path)
 
 # Color configurations
 WHITE = colorama.Fore.WHITE
@@ -68,9 +72,15 @@ def wait_for_user_input():
 if __name__ == "__main__":
     display_help()
     wait_for_user_input()
+    
     # Execute the loading animation before returning to the main menu
     from Others.Loadings import Loading
     Loading.display_loading()
+    
     # Import and execute the main script
-    import Main
-    Main.main()  # Ensure Main.py has a function named `main` to call
+    main_script = os.path.join(os.path.dirname(__file__), '..', 'Main.py')
+    if os.path.isfile(main_script):
+        import Main
+        Main.main()  # Ensure Main.py has a function named `main` to call
+    else:
+        print(colorama.Fore.RED + "Main.py script not found!" + RESET)
