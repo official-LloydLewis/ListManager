@@ -96,4 +96,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Feel free to adjust the details according to your project's needs!
+Make sure to review and adjust based on your project’s needs!
