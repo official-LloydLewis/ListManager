@@ -6,7 +6,7 @@
 
 The ListManager Project is a comprehensive suite designed to manage and manipulate user data efficiently. This repository includes functionalities for managing user information, configuring settings, and displaying data through a customizable terminal application. The project is structured to provide a modular and extendable approach to user management.
 
-## **Project Structure**
+### **Project Structure**
 
 ```
 MANAGERS
