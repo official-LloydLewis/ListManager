@@ -61,6 +61,7 @@ def main():
         base_path = os.path.dirname(__file__)
         add_script = os.path.join(base_path, 'ListManager', 'add.py')
         help_script = os.path.join(base_path, 'ListManager', 'help.py')
+        remove_script = os.path.join(base_path, 'ListManager', 'remove.py')
         
         if choice == '1':
             Title.Clear_Title()
@@ -79,7 +80,7 @@ def main():
             time.sleep(1)  # Brief pause before loading
             try:
                 # Run remove.py script
-                subprocess.run(['python', help_script], check=True)
+                subprocess.run(['python', remove_script], check=True)
             except subprocess.CalledProcessError as e:
                 print(RED + BOLD + f"Error occurred: {e}" + RESET)
             error_count = 0
