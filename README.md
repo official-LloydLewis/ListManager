@@ -1,3 +1,4 @@
+
 ---
 
 # **ListManager Project**
@@ -43,7 +44,7 @@ The application configuration is managed through a YAML file located at `LM/Conf
 ### **How It Works**
 
 1. **Configuration Loading**: The `ConfigLoader.py` file reads the `config.yml` file and provides access to configuration settings. The configuration file path is dynamically determined relative to the script’s location, ensuring compatibility across different systems.
-   
+
 2. **Usage**:
    - **Configuration File**: Place the YAML configuration file in `LM/Config/config.yml`. Adjust paths and settings as needed.
    - **Running the Application**: Execute `Main.py` to start the application. It initializes the user management system and displays the interface based on the loaded configuration.
@@ -95,4 +96,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-Feel free to adjust or expand any sections as needed!
+Feel free to adjust any parts of this README to better fit your needs.
